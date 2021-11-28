@@ -86,7 +86,10 @@ public class MoteurCalcul implements ActionListener {
                     "Pour information",
                     JOptionPane.PLAIN_MESSAGE);
 			parent.champAffichage.setText(texteChampAffichage);
-	  } else {
+	  } else if (libelléBoutonCliqué == "c"){
+			  résultatCourant = 0;
+			  parent.champAffichage.setText("");
+	  }else {
 		  parent.champAffichage.setText(texteChampAffichage + libelléBoutonCliqué);
 	  }
     }

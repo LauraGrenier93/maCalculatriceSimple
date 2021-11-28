@@ -2,6 +2,8 @@ package maCalculatriceSimple;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -20,6 +22,7 @@ public class MaCalculatriceSimple {
 	  JButton boutonDiviser = new JButton("/");
 	  JButton boutonVirgule = new JButton(",");
 	  JButton boutonEgale = new JButton("=");
+	  JButton boutonReset = new JButton("c");
 
 	  MaCalculatriceSimple() {
 		 
@@ -44,9 +47,10 @@ public class MaCalculatriceSimple {
 		  panneauChiffres.add(boutonEgale);
 		  contenuFenêtre.add("Center", panneauChiffres);
 	  
-		  GridLayout disposition3 = new GridLayout(4,1);
+		  GridLayout disposition3 = new GridLayout(5,1);
 		  panneauOperations.setLayout(disposition3);
-        
+		  
+		  panneauOperations.add(boutonReset);
 		  panneauOperations.add(boutonPlus);
 		  panneauOperations.add(boutonMoins);
 		  panneauOperations.add(boutonMultiplier);
@@ -54,6 +58,13 @@ public class MaCalculatriceSimple {
 		  contenuFenêtre.add(panneauOperations, BorderLayout.EAST);
 	  
 		  JFrame frame = new JFrame("Calculatrice");
+		  
+		  frame.addWindowListener(new WindowAdapter() {
+				public void windowClosing(WindowEvent e) {
+					System.exit(0);
+				}
+			});
+		  
 		  frame.setContentPane(contenuFenêtre);
 		  
 		  frame.pack();
@@ -65,7 +76,7 @@ public class MaCalculatriceSimple {
 		  for(JButton chiffre: boutonsChiffres) {
 			  chiffre.addActionListener(moteurCalcul);
 		  }
-		  
+		  boutonReset.addActionListener(moteurCalcul);
 		  boutonPlus.addActionListener(moteurCalcul);
 		  boutonMoins.addActionListener(moteurCalcul);
 		  boutonMultiplier.addActionListener(moteurCalcul);
