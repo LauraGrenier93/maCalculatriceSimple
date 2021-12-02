@@ -12,9 +12,9 @@ import javax.swing.JOptionPane;
 public class MoteurCalcul implements ActionListener {
     
   MaCalculatriceSimple parent; 
-  char actionSélectionnée = ' '; 
+  char actionSelectionnee = ' '; 
     
-  double résultatCourant = 0;
+  double resultatCourant = 0;
   double ancienneValeur;
 
   NumberFormat formatNombres = NumberFormat.getInstance(); 
@@ -23,74 +23,74 @@ public class MoteurCalcul implements ActionListener {
     this.parent = parent;
   }
  
-  public void actionPerformed(ActionEvent événement) {
+  public void actionPerformed(ActionEvent evenement) {
        
-    JButton boutonCliqué = (JButton) événement.getSource();
+    JButton boutonClique = (JButton) evenement.getSource();
     String texteChampAffichage = parent.champAffichage.getText();
 
-    double valeurAffichée = 0;
+    double valeurAffichee = 0;
 
     if (!"".equals(texteChampAffichage)) {
-      valeurAffichée = formatNombres.parse(texteChampAffichage, new ParsePosition(0)).doubleValue();
+      valeurAffichee = formatNombres.parse(texteChampAffichage, new ParsePosition(0)).doubleValue();
     }
-    Object sourceEvénement = événement.getSource();
+    Object sourceEvenement = evenement.getSource();
 
-    if (sourceEvénement == parent.boutonPlus) {
-        actionSélectionnée = '+';
-        résultatCourant = valeurAffichée;
+    if (sourceEvenement == parent.boutonPlus) {
+        actionSelectionnee = '+';
+        resultatCourant = valeurAffichee;
         parent.champAffichage.setText("");
     } 
-    else if (sourceEvénement == parent.boutonMoins) {
-	    actionSélectionnée = '-';
-	    résultatCourant = valeurAffichée;
+    else if (sourceEvenement == parent.boutonMoins) {
+	    actionSelectionnee = '-';
+	    resultatCourant = valeurAffichee;
 	    parent.champAffichage.setText("");
     } 
-    else if (sourceEvénement == parent.boutonDiviser) {
-	    actionSélectionnée = '/';
-	    résultatCourant = valeurAffichée; 
+    else if (sourceEvenement == parent.boutonDiviser) {
+	    actionSelectionnee = '/';
+	    resultatCourant = valeurAffichee; 
 	    parent.champAffichage.setText("");
     } 
-    else if (sourceEvénement == parent.boutonMultiplier) {
-		actionSélectionnée = '*'; 
-		résultatCourant = valeurAffichée;
+    else if (sourceEvenement == parent.boutonMultiplier) {
+		actionSelectionnee = '*'; 
+		resultatCourant = valeurAffichee;
 		parent.champAffichage.setText("");
     }
-    else if (sourceEvénement == parent.boutonEgale) {
-      if (actionSélectionnée == '+') {
-       résultatCourant += valeurAffichée;
+    else if (sourceEvenement == parent.boutonEgale) {
+      if (actionSelectionnee == '+') {
+       resultatCourant += valeurAffichee;
       } 
-      else if (actionSélectionnée == '-') { 
-      résultatCourant -= valeurAffichée;
+      else if (actionSelectionnee == '-') { 
+      resultatCourant -= valeurAffichee;
       } 
-      else if (actionSélectionnée == '/') {
-    	double ancienneValeur = résultatCourant;
-        résultatCourant /= valeurAffichée;;
-        if(String.valueOf(résultatCourant) == "Infinity") {
+      else if (actionSelectionnee == '/') {
+    	double ancienneValeur = resultatCourant;
+        resultatCourant /= valeurAffichee;;
+        if(String.valueOf(resultatCourant) == "Infinity") {
         	JOptionPane.showConfirmDialog(null,
-                    "Impossible de diviser par zéro, votre ancien résultat est de " + ancienneValeur,
+                    "Impossible de diviser par zï¿½ro, votre ancien rï¿½sultat est de " + ancienneValeur,
                     "Pour information",
                     JOptionPane.PLAIN_MESSAGE);
-        	 résultatCourant = ancienneValeur;
+        	 resultatCourant = ancienneValeur;
         }
       } 
-      else if (actionSélectionnée == '*') {
-      résultatCourant *= valeurAffichée;
+      else if (actionSelectionnee == '*') {
+      resultatCourant *= valeurAffichee;
       }
-      parent.champAffichage.setText(formatNombres.format(résultatCourant));
+      parent.champAffichage.setText(formatNombres.format(resultatCourant));
     } 
 	else {           
-	  String libelléBoutonCliqué = boutonCliqué.getText();
-	  if(libelléBoutonCliqué == "," && texteChampAffichage.indexOf(",")== 1) {
+	  String libelleBoutonClique = boutonClique.getText();
+	  if(libelleBoutonClique == "," && texteChampAffichage.indexOf(",")== 1) {
 			JOptionPane.showConfirmDialog(null,
-                    "Impossible d'avoir un chiffre avec plus d'une virgule, votre ancien résultat est de " + texteChampAffichage,
+                    "Impossible d'avoir un chiffre avec plus d'une virgule, votre ancien rï¿½sultat est de " + texteChampAffichage,
                     "Pour information",
                     JOptionPane.PLAIN_MESSAGE);
 			parent.champAffichage.setText(texteChampAffichage);
-	  } else if (libelléBoutonCliqué == "c"){
-			  résultatCourant = 0;
+	  } else if (libelleBoutonClique == "c"){
+			  resultatCourant = 0;
 			  parent.champAffichage.setText("");
 	  }else {
-		  parent.champAffichage.setText(texteChampAffichage + libelléBoutonCliqué);
+		  parent.champAffichage.setText(texteChampAffichage + libelleBoutonClique);
 	  }
     }
   }

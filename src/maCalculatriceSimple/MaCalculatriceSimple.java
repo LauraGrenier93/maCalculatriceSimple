@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JFormattedTextField;
 
 public class MaCalculatriceSimple {
-	  JPanel contenuFenêtre = new JPanel();
+	  JPanel contenuFenetre = new JPanel();
 	  JPanel panneauChiffres = new JPanel();
 	  JPanel panneauOperations = new JPanel();
 	  JFormattedTextField champAffichage = new JFormattedTextField();
@@ -27,10 +27,10 @@ public class MaCalculatriceSimple {
 	  MaCalculatriceSimple() {
 		 
 		  BorderLayout disposition1 = new BorderLayout();
-		  contenuFenêtre.setLayout(disposition1);
+		  contenuFenetre.setLayout(disposition1);
 		  
 		  champAffichage.setHorizontalAlignment(JFormattedTextField.RIGHT);
-		  contenuFenêtre.add("North", champAffichage);
+		  contenuFenetre.add("North", champAffichage);
 	  
 		 for (int numeroBouton = 0; numeroBouton < 10; numeroBouton++){
 	            boutonsChiffres[numeroBouton] = new JButton(Integer.toString(numeroBouton));
@@ -45,7 +45,7 @@ public class MaCalculatriceSimple {
 	      panneauChiffres.add(boutonsChiffres[0]);
 		  panneauChiffres.add(boutonVirgule);
 		  panneauChiffres.add(boutonEgale);
-		  contenuFenêtre.add("Center", panneauChiffres);
+		  contenuFenetre.add("Center", panneauChiffres);
 	  
 		  GridLayout disposition3 = new GridLayout(5,1);
 		  panneauOperations.setLayout(disposition3);
@@ -55,7 +55,7 @@ public class MaCalculatriceSimple {
 		  panneauOperations.add(boutonMoins);
 		  panneauOperations.add(boutonMultiplier);
 		  panneauOperations.add(boutonDiviser);
-		  contenuFenêtre.add(panneauOperations, BorderLayout.EAST);
+		  contenuFenetre.add(panneauOperations, BorderLayout.EAST);
 	  
 		  JFrame frame = new JFrame("Calculatrice");
 		  
@@ -65,7 +65,7 @@ public class MaCalculatriceSimple {
 				}
 			});
 		  
-		  frame.setContentPane(contenuFenêtre);
+		  frame.setContentPane(contenuFenetre);
 		  
 		  frame.pack();
 		  
